@@ -1,0 +1,39 @@
+﻿Подключите <b>Loader.php</b> в файле <b>main.php</b> и используйте:
+
+<pre>
+  require_once("qrc://%%projectname%%/%%addonpath%%/Loader.php");
+  
+  class MainWindow extends QWidget {
+
+    public function __construct() {
+
+      private $loader;
+
+      parent::__consctruct();
+
+      /* Инициализируем класс */
+      $this->loader = new Loader("%child_dir%");
+
+      /* Если файл конфигурации находится в ресурсах приложения */
+      $this->loader = new Loader("%child_dir%", true);
+
+      /* Если используем фоновое изображение из ресурсов приложения */
+      $this->loader = new Loader("%child_dir%", false, R("%imagepath%"), %imagewidth%, %imageheight%);
+
+      /* Если сипользуем фоновое изображение из директории приложения */
+      $this->loader = new Loader("%child_dir%", false, "%iamgepath%", %imagewidth%, %imageheight%);
+
+      /* Соединяем сигнал с публичным методом объекта */
+      $this->loader->connect(SIGNAL('completed()'), $this, SLOT('show()'));
+
+      /* Запускаем процесс загрузки */
+      $this->loader->start();
+
+    }
+
+    /* ... */
+
+  }
+  
+  /* ... */
+</pre>

@@ -1,0 +1,12 @@
+{
+    "fullname": "Loader",
+    "author": "ArtMares",
+    "desc": "Automatic loading of application components",
+    "version": "0.1",
+    "includes": [
+        "Loader.php"
+    ],
+    "files": [
+        "Loader.php"
+    ]
+}

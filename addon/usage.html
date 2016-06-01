@@ -1,0 +1,39 @@
+Include <b>Loader.php</b> in your <b>main.php</b> file and usage:
+
+<pre>
+  require_once("qrc://%%projectname%%/%%addonpath%%/Loader.php");
+  
+  class MainWindow extends QWidget {
+
+    public function __construct() {
+
+      private $loader;
+
+      parent::__consctruct();
+
+      /* Initialize class */
+      $this->loader = new Loader("%child_dir%");
+
+      /* If file of a configaration is in a resource application */
+      $this->loader = new Loader("%child_dir%", true);
+
+      /* If use background image is in a resource application */
+      $this->loader = new Loader("%child_dir%", false, R("%imagepath%"), %imagewidth%, %imageheight%);
+
+      /* If use background image is in a application directory */
+      $this->loader = new Loader("%child_dir%", false, "%iamgepath%", %imagewidth%, %imageheight%);
+
+      /* Connect signals to public method this object */
+      $this->loader->connect(SIGNAL('completed()'), $this, SLOT('show()'));
+
+      /* Run loading process */
+      $this->loader->start();
+
+    }
+
+    /* ... */
+
+  }
+  
+  /* ... */
+</pre>
